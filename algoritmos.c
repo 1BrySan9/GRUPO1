@@ -74,10 +74,28 @@ int busqueda_lineal(int *arr, int n, int valor) {
 }
 
 int busqueda_binaria(int *arr, int n, int valor) {
-    /* TODO: implementar */
-    (void)arr;
-    (void)n;
-    (void)valor;
+    //OJO se asume que el arreglo ya esta ordenado. Segun el main.c se ordena con insertion. 
+    //variables utilizadas para la funcion de busqueda
+    int izq = 0; 
+    int der = n -1; 
+    int mid; 
+     //ciclo utilizado oara la busqueda
+    while (izq <= der){
+
+        //esta ecuacion permite recorrer el arreglo desde el centro hacia los lados
+        mid = izq + (der - izq) / 2;
+
+        //y segun el resultado de cada condicion cambia el valor de alguna variable
+        if (*(arr + mid) == valor){
+            return mid; 
+        }
+        if (*(arr + mid) < valor){
+            izq = mid + 1;
+        }
+        else{
+            der = mid - 1; 
+        }
+    }
     return -1;
 }
 
