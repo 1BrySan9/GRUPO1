@@ -32,9 +32,14 @@ void insertion_sort(int *arr, int n) {
 
 int busqueda_lineal(int *arr, int n, int valor) {
     /* TODO: implementar */
-    (void)arr;
-    (void)n;
-    (void)valor;
+    int i;
+
+    for (i = 0; i < n; i++) {
+        if (*(arr + i) == valor) {
+            return i;
+        }
+    }
+
     return -1;
 }
 
