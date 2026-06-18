@@ -52,12 +52,19 @@ void selection_sort(int *arr, int n) {
         *(arr + min_idx) = variable_temp;
      }
 }
-void insertion_sort(int *arr, int n) {
-    /* TODO: implementar */
-    (void)arr;
-    (void)n;
+void insertion_sort(int *arr, int n) { //se asume un arreglo con punteros
+	int key;
+	int j;
+	for(int i = 1; i<n; i++) {
+		key = arr[i]; //direccionar el arrey
+		j = i - 1; //asignar un valor cambiante en j para el siguiente ciclo
+		while(j >= 0 && arr[j] > key) { //esto debe dezplazar los elementos hasta que la key sea mayor al elemento analizado
+			arr[j + 1] = arr[j]; //esto debe mover un elemento  la derecha por ciclo superado
+			j--;
+		}
+		arr[j + 1] = key; //esto es para cuando termine el ciclo, el valor de la key termine en el espacio "libre" disponible
+	}
 }
-
 /* ── Búsqueda ─────────────────────────────────────────── */
 
 int busqueda_lineal(int *arr, int n, int valor) {
@@ -98,12 +105,15 @@ int busqueda_binaria(int *arr, int n, int valor) {
     }
     return -1;
 }
-
-int buscar_ocurrencias(int *arr, int n, int valor, int *posiciones) {
-    /* TODO: implementar */
-    (void)arr;
-    (void)n;
-    (void)valor;
-    (void)posiciones;
-    return 0;
+int buscar_ocurrencias(int *arr, int n, int valor, int *posiciones) { //se presupone un arreglo con punteros
+	int k = 0; //esto es para dar un valor inicial 
+	for(int i = 0; i < n; i++) { //el ciclo busca que el valor de la posicion es decir k, sea el mismo que el valor de estudio i para que se denote dicha posicion 
+		if(arr[i] == valor) {
+			posiciones[k] = i; //la comparacion y asignacion, se realiza aca
+			k++; //mientras que esto solo aumenta el conteo 
+		}
+	}
+	return k;
 }
+
+
